@@ -4,6 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/GameConsole/src/gameconsole/Juego.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/GameConsole/src/Persistencia/File.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/GameConsole/src/gameconsole/GameConsole.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/GameConsole/src/gameconsole/Pista.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/GameConsole/src/gameconsole/Carro.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/GameConsole/src/gameconsole/Podio.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/GameConsole/src/gameconsole/Jugador.java</file>
         </group>
     </open-files>
 </project-private>

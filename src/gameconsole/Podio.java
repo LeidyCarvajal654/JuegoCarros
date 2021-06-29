@@ -1,18 +1,14 @@
-
 package gameconsole;
 
-
-
-
 public class Podio {
-    
+
     Jugador primerLugar;
     Jugador segundoLugar;
     Jugador tercerLugar;
-    
+
     public Podio() {
     }
-    
+
     public void asignarPrimerLugar(Jugador jugador) {
         primerLugar = jugador;
     }
@@ -24,23 +20,19 @@ public class Podio {
     public void asignarTercerLugar(Jugador jugador) {
         tercerLugar = jugador;
     }
-    
-    
+
     public Jugador primerLugar() {
         return primerLugar;
     }
-    
-    
-    public Jugador segundoLugar(){
+
+    public Jugador segundoLugar() {
         return segundoLugar;
     }
-    
-    
-    public Jugador tercerLugar(){
+
+    public Jugador tercerLugar() {
         return tercerLugar;
     }
-    
-    
+
     public Boolean Lleno() {
         Boolean lleno = false;
         if (primerLugar != null && segundoLugar != null && tercerLugar != null) {
@@ -48,5 +40,5 @@ public class Podio {
         }
         return lleno;
     }
-    
+
 }

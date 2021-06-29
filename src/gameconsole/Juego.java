@@ -41,6 +41,7 @@ public class Juego {
         
         System.out.println("Desea que el jugador con nombre: " + nombre.getNombre() + " sea conductor ? " + "Y/N");
       
+        
         String consultaConductores = in.next();
         
          if (consultaConductor.equalsIgnoreCase("Y")){
@@ -192,7 +193,8 @@ public class Juego {
         return juegoEnCurso;
 
     }
-
+    
+   
 }
     
 
