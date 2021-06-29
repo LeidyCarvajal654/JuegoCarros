@@ -27,41 +27,38 @@ public class Juego {
     ArrayList<Carro> carrosjugando = new ArrayList<>();
     ArrayList<Carril> carrilesActivos = new ArrayList<>();
     Boolean juegoEnCurso;
-    
-    public void addJugador(IdJugador idjugador,Nombre nombre){
+
+    public void addJugador(IdJugador idjugador, Nombre nombre) {
         Jugador jugador = new Jugador(nombre, 0);
         players.put(idjugador, jugador);
         addConductor(nombre);
     }
-  
-    public void addConductor (Nombre nombre){
+
+    public void addConductor(Nombre nombre) {
         Scanner in = new Scanner(System.in);
-        UUID id; 
+        UUID id;
         String consultaConductor = "";
-        
+
         System.out.println("Desea que el jugador con nombre: " + nombre.getNombre() + " sea conductor ? " + "Y/N");
-      
-        
-        String consultaConductores = in.next();
-        
-         if (consultaConductor.equalsIgnoreCase("Y")){
+
+        if (consultaConductor.equalsIgnoreCase("Y")) {
             Conductor conductor = new Conductor();
             id = UUID.randomUUID();
             IdCarro idcarro = new IdCarro(id);
             carro.addConductor(idcarro, conductor);
         }
-        
+
     }
-    
-    public void addPista(){
+
+    public void addPista() {
         int kmAleat;
         int cantCarriles = carro.numeroCarros();
-        for(int i =0; i<carro.numeroCarros();i++){
-            kmAleat = (int)(Math.random()*100 +1);
-            Pista pista = new Pista (kmAleat,cantCarriles);
+        for (int i = 0; i < carro.numeroCarros(); i++) {
+            kmAleat = (int) (Math.random() * 100 + 1);
+            Pista pista = new Pista(kmAleat, cantCarriles);
             pistas.add(pista);
         }
-        
+
     }
 
     public void Jugar(){
@@ -78,10 +75,8 @@ public class Juego {
             cont ++;
         }
         opcPista = in.nextInt();
-        while(!in.hasNextInt()) in.next();
-         
-        // Crear lista de carros en juego
-        
+        while(!in.hasNextInt()) in.next();         
+               
         carro.carros().forEach((key,value) ->{
         Carro juegocarros = new Carro (value,0,idjuego);
         carrosjugando.add(juegocarros);        
@@ -91,23 +86,23 @@ public class Juego {
              Carril carriles = new Carril (key,idjuego,posicion,kmMts,false);
              carrilesActivos.add(carriles);
     });
-        //Iniciar JUEGO
+        
         juegoEnCurso = true;
         Conductor conductor = new Conductor();
         System.out.println(" Iniciando Carrera");
         
-        //Mientras no hayan 3 ganadores el juego continua
+        
         while (juegoEnCurso) {
             int contJuego = 0;
             System.out.println("Avance " + "Meta: " + carrilesActivos.get(contJuego).metros() + " metros");
             for (Carro carros : carrosjugando) {
-                //Si el carro no ha ganado sigue jugando
+                
                 if (!hayGanador(carros.conductor().nombre())) {
                     int mover = conductor.lanzarDado() * 100;
                     carros.setDistancia(carros.distancia() + mover);
                     carrilesActivos.get(contJuego).moverCarro(carrilesActivos.get(contJuego).posicion(), mover);
                     System.out.println(carros.conductor().nombre() + ":" + " mueve: " + mover + " Nueva posición: " + carros.distancia());
-                    //Si el jugador llego a la final, asignarle la posición y el podio
+                    
                     if (carrilesActivos.get(contJuego).movFinal()) {
                         if (podio.primerLugar() == null) {
                             addPrimerLugar(idjugador(carros.conductor().nombre()));
@@ -129,7 +124,7 @@ public class Juego {
         mostrarPodio();
     }
     
-    // Retorna el id del jugador dando el nombre del jugador
+  
     public IdJugador idjugador(String nombre) {
         IdJugador verId = null;
         for (IdJugador keys : players.keySet()) {
@@ -155,7 +150,6 @@ public class Juego {
         System.out.println("El tercer lugar es: " + players.get(idjugador).nombre().getNombre());
     }
        
-    //Retorna True  si el carro en la carrera ya ganó
     public Boolean hayGanador(String nombre) {
         boolean hayGanador = false;
         if (podio.tercerLugar() == players.get(idjugador(nombre))

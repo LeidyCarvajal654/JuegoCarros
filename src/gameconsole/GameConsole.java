@@ -8,8 +8,6 @@ import java.util.Scanner;
 import java.util.UUID;
 
 
-
-
 public class GameConsole {
 
     public static void main(String[] args) {
