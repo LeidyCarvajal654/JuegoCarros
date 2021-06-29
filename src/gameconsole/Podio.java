@@ -2,6 +2,8 @@
 package gameconsole;
 
 
+
+
 public class Podio {
     
     Jugador primerLugar;
@@ -23,17 +25,21 @@ public class Podio {
         tercerLugar = jugador;
     }
     
+    
     public Jugador primerLugar() {
         return primerLugar;
     }
+    
     
     public Jugador segundoLugar(){
         return segundoLugar;
     }
     
+    
     public Jugador tercerLugar(){
         return tercerLugar;
     }
+    
     
     public Boolean Lleno() {
         Boolean lleno = false;

@@ -3,6 +3,7 @@ package gameconsole;
 
 import conectors.IdCarro;
 import conectors.IdJuego;
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class Carro {
 
     public Carro(Conductor conductor, int distancia, IdJuego idjuego) {
         this.conductor = conductor;
-        this.distancia = distancia;
+        this.distancia = distancia;        
         this.idjuego = idjuego;
     }
     

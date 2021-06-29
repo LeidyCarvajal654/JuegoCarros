@@ -2,9 +2,11 @@
 package gameconsole;
 
 
+
+
 public class Pista {
     
-    private int km,cantCarriles;
+     int km,cantCarriles;
 
     public Pista(int km, int cantCarriles) {
         this.km = km;
@@ -15,6 +17,7 @@ public class Pista {
         return km;
     }
 
+    
     public int cantCarriles() {
         return cantCarriles;
     }

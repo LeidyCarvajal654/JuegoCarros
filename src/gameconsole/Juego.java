@@ -8,14 +8,14 @@ import conectors.Nombre;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 
 
-
 public class Juego {
     
-    private ListaDoble listaConductor,listaCarro;
+    
     
     public Juego(){      
     }
@@ -35,14 +35,19 @@ public class Juego {
     }
   
     public void addConductor (Nombre nombre){
+        Scanner in = new Scanner(System.in);
         UUID id; 
-        JOptionPane.showConfirmDialog(null, "Desea que el jugador con nombre: " +nombre.getNombre()+ " Sea conductor ?");
+        String consultaConductor = "";
         
-        while(true){
-        Conductor conductor = new Conductor();
-        id = UUID.randomUUID();
-        IdCarro idcarro = new IdCarro(id);
-        carro.addConductor(idcarro, conductor);
+        System.out.println("Desea que el jugador con nombre: " + nombre.getNombre() + " sea conductor ? " + "Y/N");
+      
+        String consultaConductores = in.next();
+        
+         if (consultaConductor.equalsIgnoreCase("Y")){
+            Conductor conductor = new Conductor();
+            id = UUID.randomUUID();
+            IdCarro idcarro = new IdCarro(id);
+            carro.addConductor(idcarro, conductor);
         }
         
     }
@@ -59,17 +64,21 @@ public class Juego {
     }
 
     public void Jugar(){
+        
+        Scanner in = new Scanner(System.in);
         UUID id;
         id = UUID.randomUUID();
-        IdJuego idjuego = new IdJuego ();
-        
+        IdJuego idjuego = new IdJuego ();        
         int opcPista, cont = 1;
-              
-        opcPista= Integer.parseInt(JOptionPane.showInputDialog("Elige el número de la pista en que deseas juegar"));
+         
+        System.out.println("Elige el número de la pista en que deseas jugar: ");        
         for (Pista p: pistas){
             System.out.println(cont+"." + "kilometros: " + p.km() + "Cantidad de carriles: "+p.cantCarriles());
             cont ++;
         }
+        opcPista = in.nextInt();
+        while(!in.hasNextInt()) in.next();
+         
         // Crear lista de carros en juego
         
         carro.carros().forEach((key,value) ->{
@@ -84,11 +93,12 @@ public class Juego {
         //Iniciar JUEGO
         juegoEnCurso = true;
         Conductor conductor = new Conductor();
+        System.out.println(" Iniciando Carrera");
         
         //Mientras no hayan 3 ganadores el juego continua
         while (juegoEnCurso) {
             int contJuego = 0;
-            System.out.println("--------Avance----- " + "--------- Meta: " + carrilesActivos.get(contJuego).metros() + " metros");
+            System.out.println("Avance " + "Meta: " + carrilesActivos.get(contJuego).metros() + " metros");
             for (Carro carros : carrosjugando) {
                 //Si el carro no ha ganado sigue jugando
                 if (!hayGanador(carros.conductor().nombre())) {
@@ -172,8 +182,18 @@ public class Juego {
             Jugar();
         }
     }
-    
+ 
+    public Map<IdJugador, Jugador> players() {
+        return players;
+
     }
+
+    public Boolean juegoEnCurso() {
+        return juegoEnCurso;
+
+    }
+
+}
     
 
     

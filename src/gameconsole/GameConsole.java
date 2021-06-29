@@ -3,26 +3,30 @@ package gameconsole;
 
 import conectors.IdJugador;
 import conectors.Nombre;
+import java.awt.Color;
+import java.util.Scanner;
 import java.util.UUID;
-import javax.swing.JOptionPane;
+
 
 
 public class GameConsole {
 
     public static void main(String[] args) {
-        
+      Scanner in = new Scanner(System.in);  
         UUID id;
         int cantJugadores;
         String nomJugador;
         
         Juego juego = new Juego();
         
-       cantJugadores = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Cuantos jugadores desea crear?"));
+       System.out.println("¿Cuántos jugadores desea crear?");
+        while(!in.hasNextInt()) in.next();         
+        cantJugadores = in.nextInt();
         
        for (int i = 0; i <cantJugadores; i++){
         id = UUID.randomUUID();
         IdJugador idjugador = new IdJugador(id);
-        nomJugador = "jugador" + (i + 1);
+        nomJugador = "jugador " + (i + 1);
         Nombre nombre = new Nombre(nomJugador);
         juego.addJugador(idjugador, nombre);        
         }

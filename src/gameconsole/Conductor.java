@@ -17,7 +17,7 @@ public class Conductor {
     }
     
      public int lanzarDado(){
-         int aleatorioDado = (int) (Math.random() * 6) +1;
+         int aleatorioDado = (int) (Math.random() * 6 + 1);
          return aleatorioDado;
      }
     
